@@ -14,8 +14,6 @@ let particleEasing = "easeLinear" as Interpolation;
 
 let generatorShape = "Point" as ParticleSystemShape;
 let generatorType = "Wall" as ParticleSystemType;
-let generatorPosition = [[0, 0, 0, 0]] as KeyframesVec3;
-let generatorRotation = [[0, 0, 0, 0]] as KeyframesVec3;
 let generatorScale = [1, 1, 1] as Vec3;
 let generatorExpansion = 0;
 let generatorName = "ParticleSystem";
@@ -71,10 +69,6 @@ export class ParticleSystem {
                 particle = new Wall();
             }
 
-            particle.animate.rotation = generatorRotation; // Set the rotation of the particle generator
-            particle.animate.position = generatorPosition; // Set the position of the particle generator
-
-
             // PARTICLE SYSTEM SHAPE
             if (generatorShape == "Direction") {
                 particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomAX, particleRandomY + particleDistance, particleRandomZ + particleRandomAZ, 1, particleEasing]];
@@ -112,8 +106,6 @@ class PSGenerator {
 
     get shape() { return generatorShape; }
     get type() { return generatorType; }
-    get position() { return generatorPosition; }
-    get rotation() { return generatorRotation; }
     get scale() { return generatorScale; }
     get expansion() { return generatorExpansion; }
     get name() { return generatorName; }
@@ -126,8 +118,6 @@ class PSGenerator {
 
     set shape(value: ParticleSystemShape) { generatorShape = value; }
     set type(value: ParticleSystemType) { generatorType = value; }
-    set position(value: KeyframesVec3) { generatorPosition = value; }
-    set rotation(value: KeyframesVec3) { generatorRotation = value; }
     set scale(value: Vec3) { generatorScale = value; }
     set expansion(value: number) { generatorExpansion = value; }
     set name(value: string) { generatorName = value; }
