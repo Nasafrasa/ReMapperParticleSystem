@@ -12,7 +12,7 @@ let particleLife = 1;
 let particleDistance = 1;
 let particleEasing = "easeLinear" as Interpolation;
 
-let generatorShape = "Point" as ParticleSystemShape;
+let generatorShape = "Sphere" as ParticleSystemShape;
 let generatorType = "Wall" as ParticleSystemType;
 let generatorScale = [1, 1, 1] as Vec3;
 let generatorExpansion = 0;
@@ -75,7 +75,7 @@ export class ParticleSystem {
             // PARTICLE SYSTEM SHAPE
             if (generatorShape == "Direction") {
                 particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomAX, particleRandomY + particleDistance, particleRandomZ + particleRandomAZ, 1, particleEasing]];
-            } else if (generatorShape == "Point") {
+            } else if (generatorShape == "Sphere") {
                 particle.animate.definitePosition = [[...arrAdd(rotatePoint([0, generatorExpansion, 0], [pointX, pointY, pointZ]), 0), 0], [...arrAdd(rotatePoint([0, particleDistance, 0], [pointX, pointY, pointZ]), 0), 1, particleEasing]];
             } else if (generatorShape == "Field") {
                 particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomDistanceX, particleRandomY + particleRandomDistanceY, particleRandomZ + particleRandomDistanceZ, 1, particleEasing]]
@@ -160,7 +160,7 @@ class PSWallAnimation {
 }
 
 type ParticleSystemShape =
-    "Point" |
+    "Sphere" |
     "Direction" |
     "Field"
 
