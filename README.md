@@ -1,5 +1,5 @@
 # ReMapper Particle System (WIP)
-Welcome! This is a particle system built using ReMapper to emulate a particle system. If you find any issues or have an idea, feel free to open an issue or make a pull request. Feel free to ask any questions, you can contact by my discord (`nasafrasa#8239`).
+Welcome! This is a particle system built using ReMapper to emulate a particle system. If you find any issues or have an idea, feel free to open an issue or make a pull request. Feel free to ask any questions, you can contact me by my discord (`nasafrasa#8239`).
 
 ### Installation
 
