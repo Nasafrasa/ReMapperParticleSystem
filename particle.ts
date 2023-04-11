@@ -58,9 +58,12 @@ export class ParticleSystem {
             const particleRandomZ = rand(-generatorScale[2], generatorScale[2]);
             const particleRandomAX = rand(-generatorExpansion, generatorExpansion);
             const particleRandomAZ = rand(-generatorExpansion, generatorExpansion);
-            const particleRandomDistanceX = rand(-particleDistance, particleDistance)
-            const particleRandomDistanceY = rand(-particleDistance, particleDistance)
-            const particleRandomDistanceZ = rand(-particleDistance, particleDistance)
+            const particleRandomDistanceX = rand(-particleDistance, particleDistance);
+            const particleRandomDistanceY = rand(-particleDistance, particleDistance);
+            const particleRandomDistanceZ = rand(-particleDistance, particleDistance);
+            const pointX = rand(0,360);
+            const pointY = rand(0,360);
+            const pointZ = rand(0,360);
             let particle;
 
             if (generatorType == "Wall") {
@@ -73,7 +76,7 @@ export class ParticleSystem {
             if (generatorShape == "Direction") {
                 particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomAX, particleRandomY + particleDistance, particleRandomZ + particleRandomAZ, 1, particleEasing]];
             } else if (generatorShape == "Point") {
-                particle.animate.definitePosition = [[0, 0, 0, 0], [...arrAdd(rotatePoint([0, particleDistance, 0], [rand(0, 360), rand(0, 360), rand(0, 360)]), 0), 1, particleEasing]];
+                particle.animate.definitePosition = [[...arrAdd(rotatePoint([0, generatorExpansion, 0], [pointX, pointY, pointZ]), 0), 0], [...arrAdd(rotatePoint([0, particleDistance, 0], [pointX, pointY, pointZ]), 0), 1, particleEasing]];
             } else if (generatorShape == "Field") {
                 particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomDistanceX, particleRandomY + particleRandomDistanceY, particleRandomZ + particleRandomDistanceZ, 1, particleEasing]]
             }
