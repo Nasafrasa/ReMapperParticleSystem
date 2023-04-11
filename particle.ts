@@ -145,7 +145,7 @@ class PSParticles {
     set distance(value: number) { particleDistance = value; }
     set easing(value: Interpolation) { particleEasing = value; }
 
-    /** The animation of this Particel System. */
+    /** The animation of this Particle System. */
     animate = new PSWallAnimation();
 
 }
