@@ -18,7 +18,7 @@ let generatorPosition = [[0, 0, 0, 0]] as KeyframesVec3;
 let generatorRotation = [[0, 0, 0, 0]] as KeyframesVec3;
 let generatorScale = [1, 1, 1] as Vec3;
 let generatorExpansion = 0;
-let generatorName = "gen";
+let generatorName = "ParticleSystem";
 
 // Custom Stuff
 let particleAnimateDissolve = [[1, 0]] as KeyframesLinear;
@@ -100,7 +100,7 @@ export class ParticleSystem {
             particleTracks.push(particle.track.value);
             particle.push(true);
         }
-        new CustomEvent().assignTrackParent(particleTracks, generatorName + "PS").push();
+        new CustomEvent().assignTrackParent(particleTracks, generatorName).push();
     }
 }
 
