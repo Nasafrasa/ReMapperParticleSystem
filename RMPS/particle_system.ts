@@ -12,7 +12,9 @@ let particleEasing = "easeLinear" as Interpolation;
 let generatorShape = "Sphere" as ParticleSystemShape;
 let generatorType = "Wall" as ParticleSystemType;
 let generatorScale = [1, 1, 1] as Vec3;
-let generatorExpansion = 0;
+let generatorPosition = [0,0,0] as Vec3;
+let generatorRotation = [0,0,0] as Vec3;
+let generatorExpansion = [0, 0, 0] as Vec3;
 let generatorName = "ParticleSystem";
 
 // Custom Stuff
@@ -41,7 +43,7 @@ export class ParticleSystem {
      * Make the Particle System
      * @returns 
      */
-    push() {
+    push(wall?: (wall: Wall) => void) {
 
         const particleTracks = [];
 
@@ -53,8 +55,9 @@ export class ParticleSystem {
             const particleRandomX = rand(-generatorScale[0], generatorScale[0]);
             const particleRandomY = rand(-generatorScale[1], generatorScale[1]);
             const particleRandomZ = rand(-generatorScale[2], generatorScale[2]);
-            const particleRandomAX = rand(-generatorExpansion, generatorExpansion);
-            const particleRandomAZ = rand(-generatorExpansion, generatorExpansion);
+            const particleRandomAX = rand(-generatorExpansion[0], generatorExpansion[0]);
+            const particleRandomAY = rand(-generatorExpansion[1], generatorExpansion[1]);
+            const particleRandomAZ = rand(-generatorExpansion[2], generatorExpansion[2]);
             const particleRandomDistanceX = rand(-particleDistance, particleDistance);
             const particleRandomDistanceY = rand(-particleDistance, particleDistance);
             const particleRandomDistanceZ = rand(-particleDistance, particleDistance);
@@ -71,9 +74,9 @@ export class ParticleSystem {
 
             // PARTICLE SYSTEM SHAPE
             if (generatorShape == "Direction") {
-                particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomAX, particleRandomY + particleDistance, particleRandomZ + particleRandomAZ, 1, particleEasing]];
+                particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomAX, particleRandomY + particleDistance + particleRandomAY, particleRandomZ + particleRandomAZ, 1, particleEasing]];
             } else if (generatorShape == "Sphere") {
-                particle.animate.definitePosition = [[...arrAdd(rotatePoint([0, generatorExpansion, 0], [pointX, pointY, pointZ]), 0), 0], [...arrAdd(rotatePoint([0, particleDistance, 0], [pointX, pointY, pointZ]), 0), 1, particleEasing]];
+                particle.animate.definitePosition = [[...arrAdd(rotatePoint([0, generatorExpansion[0], 0], [pointX, pointY, pointZ]), 0), 0], [...arrAdd(rotatePoint([0, particleDistance, 0], [pointX, pointY, pointZ]), 0), 1, particleEasing]];
             } else if (generatorShape == "Field") {
                 particle.animate.definitePosition = [[particleRandomX, particleRandomY, particleRandomZ, 0], [particleRandomX + particleRandomDistanceX, particleRandomY + particleRandomDistanceY, particleRandomZ + particleRandomDistanceZ, 1, particleEasing]]
             }
@@ -92,9 +95,17 @@ export class ParticleSystem {
             particle.interactable = false;
             particle.track.value = generatorName + `Particle${i}`
             particleTracks.push(particle.track.value);
+
+            if (wall) wall(particle);
+
             particle.push(true);
         }
         new CustomEvent().assignTrackParent(particleTracks, generatorName).push();
+        
+        const generator = new CustomEvent().animateTrack(generatorName);
+        generator.animate.position = generatorPosition;
+        generator.animate.rotation = generatorRotation;
+        generator.push();
     }
 }
 
@@ -107,6 +118,8 @@ class PSGenerator {
     get shape() { return generatorShape; }
     get type() { return generatorType; }
     get scale() { return generatorScale; }
+    get position() { return generatorPosition; }
+    get rotation() { return generatorRotation; }
     get expansion() { return generatorExpansion; }
     get name() { return generatorName; }
 
@@ -119,7 +132,9 @@ class PSGenerator {
     set shape(value: ParticleSystemShape) { generatorShape = value; }
     set type(value: ParticleSystemType) { generatorType = value; }
     set scale(value: Vec3) { generatorScale = value; }
-    set expansion(value: number) { generatorExpansion = value; }
+    set position(value: Vec3) { generatorPosition = value; }
+    set rotation(value: Vec3) { generatorRotation = value; }
+    set expansion(value: Vec3) { generatorExpansion = value; }
     set name(value: string) { generatorName = value; }
 
 }
