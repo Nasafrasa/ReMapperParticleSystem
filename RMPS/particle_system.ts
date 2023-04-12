@@ -1,7 +1,4 @@
-import { Wall } from "./wall.ts";
-import { CustomEvent } from "./custom_event.ts";
-import { rand, Vec3, arrAdd, rotatePoint } from "./general.ts";
-import { KeyframesLinear, KeyframesVec3, KeyframesVec4, Interpolation } from "./animation.ts";
+import { CustomEvent, Wall, rand, Vec3, arrAdd, rotatePoint, KeyframesLinear, KeyframesVec3, KeyframesVec4, Interpolation } from "https://deno.land/x/remapper@3.1.1/src/mod.ts";
 
 // Generator Features
 let generatorTime: number;
