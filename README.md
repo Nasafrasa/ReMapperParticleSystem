@@ -3,7 +3,19 @@ Welcome! This is a particle system built using ReMapper to emulate a particle sy
 
 ### Installation
 
-Placeholder text.
+To use the ReMapper Particle System in your maps, first put this line at the top of your code:
+```ts
+import { ParticleSystem } from "https://deno.land/x/rmps@0.0.1/src/mod.ts";
+```
+If there is a red line under the link, jst hover your mouse over it, press quick fix, and cache the dependency. You're now free to use the ReMapper Particle System!
+
+Here's a basic intro on how to use this:
+```ts
+const PS = new ParticleSystem(0,100,1000);
+PS.push();
+```
+The first value is the time the generator starts generating particles. The second value is how long the generator will generate particles. The third value is how many particles will be produced. You can find more properties by typing out `PS.` and looking at the list of properties. To see all the features this has, click the links to the documentation below.
+
 
 ### Documentation
 
