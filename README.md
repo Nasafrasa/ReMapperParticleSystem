@@ -21,6 +21,7 @@ The first value is the time the generator starts generating particles. The secon
 
 - [Generator](https://github.com/Nasafrasa/ReMapperParticleSystem/wiki/Generator-Documentation)
 - [Particle](https://github.com/Nasafrasa/ReMapperParticleSystem/wiki/Particle-Documentation)
+- [Functions](https://github.com/Nasafrasa/ReMapperParticleSystem/wiki/Functions-Documentation)
 
 ### Example Effects
 
