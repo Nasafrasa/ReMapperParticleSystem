@@ -5,7 +5,7 @@ Welcome! This is a particle system built using ReMapper to emulate a particle sy
 
 To use the ReMapper Particle System in your maps, first put this line at the top of your code:
 ```ts
-import { ParticleSystem } from "https://deno.land/x/rmps@0.0.2/RMPS/mod.ts";
+import { ParticleSystem } from "https://deno.land/x/rmps@0.1.0/RMPS/mod.ts";
 ```
 If there is a red line under the link, jst hover your mouse over it, press quick fix, and cache the dependency. You're now free to use the ReMapper Particle System!
 
