@@ -47,7 +47,7 @@ export class ParticleSystem {
     push(particle?: (particle: Note | Wall | Bomb) => void) {
         const pTracks = [];
         for (let i = 1; i <= gParticleAmount; i++) {
-            const pTime = rand(gTime, gTime + gDuration);
+            const pTime = rand(0, gDuration);
             const pRandPos = [rand(-gScale[0], gScale[0]), rand(-gScale[1], gScale[1]), rand(-gScale[2], gScale[2])];
             const pRandPosEx = [rand(-gExpansion[0], gExpansion[0]), rand(-gExpansion[1], gExpansion[1]), rand(-gExpansion[2], gExpansion[2])];
             const pRandDistance = [rand(-pDistance, pDistance), rand(-pDistance, pDistance), rand(-pDistance, pDistance)];
