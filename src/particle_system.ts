@@ -1,5 +1,5 @@
 // deno-lint-ignore-file adjacent-overload-signatures
-import { arrAdd, Bomb, CustomEvent, CUT, Interpolation, KeyframesLinear, KeyframesVec3, KeyframesVec4, Note, rand, rotatePoint, Vec3, Wall } from "https://deno.land/x/remapper@3.1.1/src/mod.ts";
+import { arrAdd, Bomb, CustomEvent, CUT, Interpolation, KeyframesLinear, KeyframesVec3, KeyframesVec4, Note, rand, rotatePoint, Vec3, Wall } from "https://deno.land/x/remapper@3.1.2/src/mod.ts";
 
 // Particle variables
 let pLife = 1;
